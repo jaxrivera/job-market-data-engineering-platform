@@ -1,0 +1,64 @@
+# Guide — Job Market Data Engineering Platform
+
+## 🎯 Project Summary (How to explain in interviews)
+
+This project is an end-to-end data engineering pipeline that simulates a real-world job market analytics system. It ingests data from an external API, processes it using PySpark, stores it in a structured SQL-based warehouse, and visualizes insights using a BI dashboard built with Streamlit.
+
+---
+
+## 🧠 How I Designed the System
+
+I designed this pipeline to mimic a production-style data architecture:
+
+API → Spark ETL → Parquet Storage → SQL Warehouse → BI Dashboard
+
+Each layer was chosen to solve a specific problem:
+
+- **API Layer** → Simulates real-world external data ingestion
+- **Spark Layer** → Handles scalable data transformation
+- **Parquet Layer** → Optimized intermediate storage format
+- **SQL Warehouse** → Enables structured querying and analytics
+- **Dashboard Layer** → Provides business-level insights
+
+---
+
+## ⚙️ Key Technical Decisions
+
+### 1. Why PySpark?
+I used PySpark to simulate distributed processing and handle structured/semi-structured data efficiently. It also reflects real-world big data systems used in industry.
+
+---
+
+### 2. Why Parquet?
+Parquet provides columnar storage, which improves performance for analytical workloads compared to raw JSON or CSV formats.
+
+---
+
+### 3. Why SQLite for the warehouse?
+SQLite was used as a lightweight SQL warehouse to simulate relational database storage without requiring cloud infrastructure.
+
+---
+
+### 4. Why Streamlit for BI dashboard?
+Streamlit allows fast development of interactive dashboards using Python, making it ideal for rapid analytics prototyping.
+
+---
+
+## 🔥 What Makes This Project Strong
+
+- End-to-end data pipeline (not just a script)
+- Uses multiple data engineering tools together
+- Includes both batch processing and analytics
+- Demonstrates debugging of real system-level issues (Spark + Java)
+- Includes BI visualization layer
+
+---
+
+## ⚠️ Challenges & How I Solved Them
+
+### 1. Spark JSON Parsing Errors
+**Problem:** Spark was reading corrupted schema fields
+
+**Fix:** Used:
+```python
+.option("multiline", "true")
